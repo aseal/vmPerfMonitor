@@ -6,12 +6,13 @@ utilized VMs at the conclusion of this program.
 
 ## Usage
 
-  $ ./vmPerfTest.py 
-  Enter number of VMs: 5
-  Enter number of minutes to monitor: 5
+	$ ./vmPerfTest.py
+  
+  	Enter number of VMs: 5
+  	Enter number of minutes to monitor: 5
 
-  VM   Avg_CPU_Util   Avg_Mem_Usage    Avg_Disk_Usage   Under_Utilized
-  ----------------------------------------------------------------------
+	VM   Avg_CPU_Util   Avg_Mem_Usage    Avg_Disk_Usage   Under_Utilized
+	----------------------------------------------------------------------
     	0      0.00           69.15             75.00         1
 	    1      0.00           48.62             46.00         1
     	2   2073.33          130.91             84.00         0
