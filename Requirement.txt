@@ -1,0 +1,40 @@
+Following is the coding exercise that you need to complete. Please let me know
+if you need any clarification on the requirements or the problem statement.
+
+Please let me know if you have any questions or need any clarifications.
+
+Problem Statement:
+
+Design and Implement a system to determine unused/underutilized VM's in a
+private cloud for optimizing the capacity usage of the cloud. For sake of
+simplicity, we will only use the CPU usage, Memory usage and disk usage to
+determine a VM’s utilization. Once we collect the data, the system should be
+able to determine the VM’s that are under-utilized and list them for
+reclamation.
+
+Deliverables:
+
+The final product needs to a working application written in a language of your
+choice that when executed will determine underutilized VM’s. The program should
+at least take the following parameters as input: Number Of VM’s. (The program
+can use processes or threads to mimic VM’s.).  CPU, Memory and Disk Thresholds
+that determines whether a VM is under-utilized. (For instance, you could say CPU
+below 10%, Memory below 20%, and Disk below 10% is considered as
+under-utilized.) Total time you want the program to run in minutes.  Once the
+program is executed with the above inputs, it needs to keep running and collect
+data from the VM’s every minute and store that data locally. After the program
+finishes its execution, it will collect all the data and can use a simple
+average to determine the under-utilized VM’s. 
+
+ The deliverables should also include the following: Documentation that explains
+ your solution.  Documentation on setting up your code on our local box and
+ executing it to see the output.  If some requirements are unclear and you would
+ like to make some assumptions on your side, please state them clearly in the
+ documentation.
+
+ Things considered while grading: Use of OOP Principles.  The solution should be
+ scalable across thousands of VM’s deployed in the cloud.  Documentation and
+ Blueprints around your solution.
+
+ Time: Since you will need some time to design and implement this coding task,
+ you can take the next 3-5 days to implement it completely.

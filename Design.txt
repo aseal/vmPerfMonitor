@@ -1,0 +1,102 @@
+VMPerfMonitor Design Document
+=============================
+
+A. Introduction
+
+	VM Performance Monitor monitors the VMs for CPU Utilization, memory and disk
+	usage. It computes the average usage, which can be used to decommision under
+	utilized VMs at the conclusion of this program.
+
+
+B. Inputs
+
+	Number of VMs -	Create a dummy process multiple times for this test Duration
+	- Total run time in minutes 
+
+
+C. Outputs
+
+	The program should collect statistics every minute from all the process and
+	store. At the end of the run time, the program should average the statistics
+	and display the statistics and mark the under-utilized VMs.
+
+	VM #	Avg CPU Util	Avg Mem Usage	Avg Disk Usage	Under-Utilized
+	----------------------------------------------------------------------
+	  1        50            65                75              No
+	  2	       10            65                75              Yes
+
+
+D. Design
+
+The program has the following classes
+
+	1. vmPerfController
+	-------------------
+	This is the main class, which holds	all the data structure and code logic.
+
+	Controller maintains a list of nodes. Nodes can be added/removed
+	dynamically. This can be done automatically based on a configuration and
+	monitoring the state of the node [not implemented] or can be done by user
+	process.
+
+	Controller implements the functions to query the statistics periodically and
+	the average on request.
+
+	2. vmPerfNodes
+	--------------
+	This class maintains the node conneciton data and statistics.
+
+	The Node class implements the function to grab the statistics and compute
+	the average as needed. It stores the intermediate results unless explicitly
+	removed. This is required because, user may like to see history of the
+	statistics.
+
+	The disk usage is not actually looking at disk - as it does not make sense
+	for a process. Instead it is looking for opened files.
+
+	The collected data should also be stored in persistent storage for future
+	data analysis [not implemented].
+
+	3. vmPerfTest
+	-------------
+	This class is the tester class which communicates with the controller class
+	and runs the test.
+
+	It collects user input for number of processes (VMs) and duration of the
+	data sampling process.
+	
+	It simulates VM by spawning dummy processes.
+
+	On, completion of the sampling of the data it prints the report in the
+	output format as specified above.
+
+
+
+E. VM Simulation
+
+	VM Simulation is done thorough spawning a dummy process. The dummy process
+	does the following things -
+
+		1. Opens random number of files 2. Computes a matrix multiplication on
+		random sized matrix 3. Finally sleeps to cover for the completion of the
+		monitor
+
+F. Scalability Challenges
+
+	The design is more of a guideline which can be extended to address the
+	actual scalability challenges. The modular design allows enhancing any part
+	or adding additional classes as needed.
+
+	Additional things to be done -
+	1. The error handling needs to be added. All the function should have
+	exception handing.
+	2. The nodes need to be monitored for active state and should be flagged if
+	not responding.
+	3. The monitoring can be done in multiple threads to take advantage of multi
+	core CPUs.
+
+G. Conclusion
+
+	This is tested in VM environment with limited number of VMs. This will
+	provide	a good starting point which can be used to build a bigger scalable
+	system.
